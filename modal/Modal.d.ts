@@ -1,10 +1,10 @@
-import { default as React, HTMLAttributes, CSSProperties } from '../../../node_modules/react';
+import { default as React, ButtonHTMLAttributes, HTMLAttributes } from '../../../node_modules/react';
 
-export interface ModalProps extends React.PropsWithChildren {
+export interface ModalProps extends React.PropsWithChildren, Pick<HTMLAttributes<HTMLElement>, 'style'> {
     children?: React.ReactNode;
     isOpen: boolean;
     position: 'top' | 'bottom' | 'center';
-    style?: CSSProperties;
+    size?: 'small' | 'medium' | 'large';
     onClose: () => void;
 }
 declare const Modal: React.FC<ModalProps> & {
@@ -13,20 +13,28 @@ declare const Modal: React.FC<ModalProps> & {
     IconButton: ModalIconButtonType;
     TextButton: ModalTextButtonType;
     Content: ModalContentType;
+    Input: ModalInputType;
     Footer: ModalFooterType;
 };
 type ModalHeaderType = React.FC<React.PropsWithChildren<HTMLAttributes<HTMLElement>>>;
 type ModalTitleType = React.FC<React.PropsWithChildren<HTMLAttributes<HTMLSpanElement>>>;
 type ModalIconButtonType = React.FC<React.PropsWithChildren<{
-    onClose: () => void;
+    actionFn: () => void;
     src: string;
     imgSize?: string;
-} & HTMLAttributes<HTMLButtonElement>>>;
+} & ButtonHTMLAttributes<HTMLButtonElement>>>;
 type ModalTextButtonType = React.FC<React.PropsWithChildren<{
-    onClose: () => void;
-    buttonSize?: string;
+    actionFn: () => void;
+    buttonWidth?: string;
+    buttonHeight?: string;
     fontSize?: string;
-} & HTMLAttributes<HTMLButtonElement>>>;
+    backgroundColor?: string;
+    fontColor?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>>>;
 type ModalContentType = React.FC<React.PropsWithChildren<HTMLAttributes<HTMLElement>>>;
-type ModalFooterType = React.FC<React.PropsWithChildren<HTMLAttributes<HTMLDivElement>>>;
+type ModalInputType = React.FC<React.PropsWithChildren<HTMLAttributes<HTMLElement>>>;
+type ModalFooterType = React.FC<React.PropsWithChildren<{
+    buttonPosition?: 'left' | 'center' | 'right';
+    buttonGap?: string;
+} & HTMLAttributes<HTMLDivElement>>>;
 export default Modal;

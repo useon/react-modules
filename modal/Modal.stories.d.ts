@@ -7,17 +7,24 @@ declare const meta: {
         Header: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<import('../../../node_modules/react').HTMLAttributes<HTMLElement>>>;
         Title: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<import('../../../node_modules/react').HTMLAttributes<HTMLSpanElement>>>;
         IconButton: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<{
-            onClose: () => void;
+            actionFn: () => void;
             src: string;
             imgSize?: string | undefined;
-        } & import('../../../node_modules/react').HTMLAttributes<HTMLButtonElement>>>;
+        } & import('../../../node_modules/react').ButtonHTMLAttributes<HTMLButtonElement>>>;
         TextButton: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<{
-            onClose: () => void;
-            buttonSize?: string | undefined;
+            actionFn: () => void;
+            buttonWidth?: string | undefined;
+            buttonHeight?: string | undefined;
             fontSize?: string | undefined;
-        } & import('../../../node_modules/react').HTMLAttributes<HTMLButtonElement>>>;
+            backgroundColor?: string | undefined;
+            fontColor?: string | undefined;
+        } & import('../../../node_modules/react').ButtonHTMLAttributes<HTMLButtonElement>>>;
         Content: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<import('../../../node_modules/react').HTMLAttributes<HTMLElement>>>;
-        Footer: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<import('../../../node_modules/react').HTMLAttributes<HTMLDivElement>>>;
+        Input: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<import('../../../node_modules/react').HTMLAttributes<HTMLElement>>>;
+        Footer: import('../../../node_modules/react').FunctionComponent<import('../../../node_modules/react').PropsWithChildren<{
+            buttonPosition?: "center" | "left" | "right" | undefined;
+            buttonGap?: string | undefined;
+        } & import('../../../node_modules/react').HTMLAttributes<HTMLDivElement>>>;
     };
     parameters: {
         layout: string;
@@ -57,6 +64,13 @@ declare const meta: {
             options: string[];
             description: string;
         };
+        size: {
+            control: {
+                type: "radio";
+            };
+            options: string[];
+            description: string;
+        };
     };
     args: {
         onClose: import('@vitest/spy').Mock<[], void>;
@@ -70,3 +84,6 @@ export declare const 기본: Story;
 export declare const 이미지_버튼이_있는_모달: Story;
 export declare const 텍스트_버튼이_있는_모달: Story;
 export declare const 이미지_버튼과_텍스트_버튼이_있는_모달: Story;
+export declare const 확인_모달: Story;
+export declare const 확인_취소_모달: Story;
+export declare const 입력_모달: Story;
